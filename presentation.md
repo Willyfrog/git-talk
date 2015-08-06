@@ -1,124 +1,119 @@
-Preston
+Welcome to Git talk!
 
-    (open `index.html` in Safari or Firefox to see this presentation.)
-    Hello all, welcome to the presentation. 
-    I am going to talk about a presentation tool called Preston.
-    
-Why?
+    AMA!
 
-    Why did I write yet another presentation tool?
-    
-In Browser
-    
-    So, I have like for a long time the simplicity of running a presentation
-    inside of a web browser 
 
-S5    
-    
-    and have been using a modified version of S5
-    that supported Markdown for a while.
-    
-Takahashi Style
+Saving your work
 
-    I tend to do presentations in the Takahashi style, where
-    most of the slides are simply a couple of words that are centered 
-    on the screen.
-    
-Problem
+    - That's what git is about
+    - It's flexible, as a rope
 
-    But the problem I run across is that I find I have to write out my
-    monologue and 
-    
-Memorization
-    
-    memorize it by practicing it over and over again.
-    
-Time Consuming
 
-    This is very time consuming.
-    
-Notes!
+VCS vs DVCS
+(vs VCSVSDVCS)
 
-    While practicing one day I had the idea that if you had your
-    notes in front of you, then you ***don't have to memorize***.
-    If you forget what to say, simply let your notes jug your memory
-    enough to keep going.
-    
-Preston
+    - Centralized or Distributed
+    - CVS and Subversion are VCSs while GIT and Mercurial are DVCSs.
+    - Lock server on every operation vs work offline
 
-    The result is Preston.
-    
-File Format
 
-    The file format is inspired both by
-    
-Markdown
+Commit and HEAD
 
-    markdown
-    
-Pitchography
+    - Commit is the atomic particle of GIT.
+    - In git is like a snapshot of the files, not differences to previous
+      versions.
+    - May have a parent, or several, or none.
+    - HEAD is the name of the commit we are now.
 
-    and a past Node Knockout entry called Pitchograph, which is a
-    presentation tool in its own right - a very awesome one, in fact.
-    
-<pre>Slide 1
-    
-    notes notes notes notes
-    notes notes notes
-    
-Slide 2
 
-    notes notes notes notes
+Branch and Master
+
+    - Branch is only a pointer to a commit.
+    - Master is the default name for the first branch in a repo.
+
+
+Repository or History
+
+    - Repository is the name for all the commits.
+    - You'll find a .git dir inside it.
+    - Once you commit, it's stored and can be shared with
+      other people.
+
+
+Remotes
+
+    - Far away repos.
+    - Intended for sharing work, or backups.
+    - You can have several
+
+
+Working Tree
+
+    - The dir where you have .git folder
+    - It contains the work your are working on
+    - Some files might be unsaved, staged, not tracked...
+
+
+Index or Staging Area
+
+    - The index for the next commit
+    - Not yet written to stone, it's a WIP
+
+
+
+Beware: {
+
+    - Common mistakes one can commit when getting started
+    
+
+Ignored/untracked files
+
+    - Filetypes or paths can be set to be ignored always
+    - We should check we added the files we want to commit
+    
+
+Staged file, modified afterwards
+
+    - Even if we added a file to the index, it could have been modified
+      afterwards
+    - We will see it in both places: added and unstaged
+
+}
+   - Warning ends here
+
+
+Stashes
+
+    - Drawers to save your current work.
+    - Noncomplicated, you just apply them over your current status
+
+
+Hashes (or the elephant in the room)
+
+    - You're going to see them everywhere, so let's talk about it.
+    - Git checks everything by generating a 40-char checksum of the things.
+    - You cannot modify something without git noticing.
+    - If we want to refer to a commit or something that has no name, we can use
+      its hash to do it.
+
+
+Creating a repo
+<pre>
+$ git init
 </pre>
 
-    So a Preston presentation looks like this. You start with the words
-    you want to put on a slide, then underneath it you indent the notes
-    for this slide.
-    
-Markdown
+    - Creates an 'empty' .git directory
 
-    Both the content for the slides and the notes are run through Markdown,
-    so you can use
-    
-[Links](http://google.com)
-    
-    links
-    
-![Images](images.png)
 
-    Images
-    
-Markdown
+Cloning a repo
 
-    And anything else that Markdown provides.
-    
-Code Blocks?
+<pre>
+$ git clone http://github.com/gnufede/git-talk
+</pre>
+    - Grabs a .git directory from the internet, recreates HEAD in Working Tree
 
-    Well, almost everything.
-    So, I did introduce a problem: I stole the indentation
-    syntax from Markdown which is normally used for code blocks.
-    So now you can't write code blocks in the Markdown way in your slides.
-    
-&lt;pre&gt;
 
-    The solution is to use the pre tag to wrap your code blocks. It's not great,
-    but it's the best I could think of and I think it's adequate. And it's still
-    valid markdown.
-    
-Browser Support
+![3-phase-commit](http://rogerdudler.github.io/git-guide/img/trees.png)
 
-    So, you'd expect this to work on all browsers, right?
-    
-✔Safari  
-✔Firebox
+    - Note the 3 stages
 
-    No. Right now Preston has only been tested succesfully on the latest Safari
-    and Firefox.
-    
-Chrome  
-- HTTP only
-
-    Notably, it doesn't work on Chrome with local files, although it works if you
-    serves the files using HTTP
-
-    
