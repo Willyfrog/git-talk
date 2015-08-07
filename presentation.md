@@ -1,22 +1,21 @@
-Git talk | Fede Mon
+Git talk
     AMA!
 
 
-Saving your work
+Safe
 
     - That's what git is about
     - It's flexible, as a rope
 
 
-VCS vs DVCS
-(vs VCSVSDVCS)
+(D)VCS
 
     - Centralized or Distributed
     - CVS and Subversion are VCSs while GIT and Mercurial are DVCSs.
     - Lock server on every operation vs work offline
 
 
-Commit and HEAD
+Commit & HEAD
 
     - Commit is the atomic particle of GIT.
     - In git is like a snapshot of the files, not differences to previous
@@ -25,13 +24,13 @@ Commit and HEAD
     - HEAD is the name of the commit we are now.
 
 
-Branch and Master
+Branch & Master
 
     - Branch is only a pointer to a commit.
     - Master is the default name for the first branch in a repo.
 
 
-Repository or History
+Repository == History
 
     - Repository is the name for all the commits.
     - You'll find a .git dir inside it.
@@ -53,7 +52,7 @@ Working Tree
     - Some files might be unsaved, staged, not tracked...
 
 
-Index or Staging Area
+Index == Staging Area
 
     - The index for the next commit
     - Not yet written to stone, it's a WIP
@@ -65,13 +64,13 @@ Beware: {
     - Common mistakes one can commit when getting started
     
 
-Ignored/untracked files
+Untracked files
 
     - Filetypes or paths can be set to be ignored always
     - We should check we added the files we want to commit
     
 
-Staged file, modified afterwards
+Modified afterwards
 
     - Even if we added a file to the index, it could have been modified
       afterwards
@@ -87,7 +86,7 @@ Stashes
     - Noncomplicated, you just apply them over your current status
 
 
-Hashes (or the elephant in the room)
+Hashes
 
     - You're going to see them everywhere, so let's talk about it.
     - Git checks everything by generating a 40-char checksum of the things.
@@ -97,16 +96,27 @@ Hashes (or the elephant in the room)
 
 
 Configuration
-<pre>
-$ git config --global user.name "Fede Mon"
-$ git config --global user.email gnu.fede@gmail.com
-</pre>
 
     - Several levels of config, global is for your user.
     - System is for every user on your machine, also repo level.
 
 
-Creating a repo
+git config
+<pre>
+$ git config --global user.name "Fede Mon"
+$ git config --global user.email gnu.fede@gmail.com
+</pre>
+
+    - Just to get started
+    - Much more options
+
+
+Create
+
+    - Let's see how to convert a dir into a repo
+
+
+git init
 <pre>
 $ git init
 </pre>
@@ -114,41 +124,73 @@ $ git init
     - Creates an 'empty' .git directory
 
 
-Cloning a repo
+Clone
+
+    - That's how we copy previous work
+
+
+git clone
 <pre>
 $ git clone http://github.com/gnufede/git-talk
 </pre>
-
     - Grabs a .git directory from the internet, recreates HEAD in Working Tree
 
 
 ![3-phase-commit](http://rogerdudler.github.io/git-guide/img/trees.png)
 
     - Note the 3 stages
+    - TODO: Change the image
 
 
-Let's see it slowly
-
-    - Example: edit file
-    - Add file
-    - Edit file
-    - Commit
+Do your stuff
+    - Edit your files if you haven't
 
 
-Branching
+Stage
+    - Add a file to the staging area
+
+
+git add
+<pre>
+$ git add myfile.txt
+$ git add stuff/
+</pre>
+    - . or dir allows to add everything there, including untracked files
+
+
+Write
+    - Create an actual commit that will go to the history
+    
+
+git commit
+<pre>
+$ git commit -m "bla"
+$ git commit -am "bla"
+</pre>
+    - -a does everything in one command
+
+
+Open branches
+    - Use them to split work
+
+
+git checkout
 <pre>
 $ git checkout -b "new_branch"
 </pre>
 
-    - Use them to split work
     - I.E. different tasks
 
 
-Merging
+Close branches
+    - Joins two or more branches
+
+
+git merge
 <pre>
 $ git merge master
 </pre>
 
-    - Use them to join
+    - Use them to close tasks
 
 
