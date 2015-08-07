@@ -1,5 +1,4 @@
-Welcome to Git talk!
-
+Git talk | Fede Mon
     AMA!
 
 
@@ -97,6 +96,16 @@ Hashes (or the elephant in the room)
       its hash to do it.
 
 
+Configuration
+<pre>
+$ git config --global user.name "Fede Mon"
+$ git config --global user.email gnu.fede@gmail.com
+</pre>
+
+    - Several levels of config, global is for your user.
+    - System is for every user on your machine, also repo level.
+
+
 Creating a repo
 <pre>
 $ git init
@@ -106,14 +115,40 @@ $ git init
 
 
 Cloning a repo
-
 <pre>
 $ git clone http://github.com/gnufede/git-talk
 </pre>
+
     - Grabs a .git directory from the internet, recreates HEAD in Working Tree
 
 
 ![3-phase-commit](http://rogerdudler.github.io/git-guide/img/trees.png)
 
     - Note the 3 stages
+
+
+Let's see it slowly
+
+    - Example: edit file
+    - Add file
+    - Edit file
+    - Commit
+
+
+Branching
+<pre>
+$ git checkout -b "new_branch"
+</pre>
+
+    - Use them to split work
+    - I.E. different tasks
+
+
+Merging
+<pre>
+$ git merge master
+</pre>
+
+    - Use them to join
+
 
