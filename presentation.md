@@ -258,7 +258,7 @@ Conflicts
 
 3-way resolution
 <pre>
-$ git config merge.confluctstyle diff3
+$ git config merge.conflictStyle diff3
 </pre>
     - We can change conflict style from merge to diff3.
     - With --global if you want it in every repo.
@@ -292,6 +292,12 @@ $ git mergetool
 </pre>
     - Git provides a way to choose your tool.
 
+
+Special files
+<pre>
+*.pbxproj binary merge=union
+</pre>
+    - Per-file or extension merge strategy
 
 Patches
 <pre>
