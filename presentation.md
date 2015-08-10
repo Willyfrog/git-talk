@@ -145,7 +145,6 @@ $ git clone http://github.com/gnufede/git-talk
 Do your stuff
     - Edit your files if you haven't
 
-
 Stage
     - Add a file to the staging area
 
@@ -168,6 +167,51 @@ $ git commit -m "bla"
 $ git commit -am "bla"
 </pre>
     - -a does everything in one command
+
+
+Show
+    - Check the status of your repo
+    - Check the log of last commits
+    - Check the diffs
+    - See last modifications
+
+
+git status
+<pre>
+$ git status
+</pre>
+    - Shows the status of your repo
+    - Changes to commit
+    - Changes not being commited
+
+git log
+<pre>
+$ git log
+</pre>
+    - Shows the log of commits
+
+git show
+<pre>
+$ git show 98765
+$ git show 98765:path/file.txt
+</pre>
+    - Shows a commit
+
+
+
+git diff
+<pre>
+$ git diff
+$ git diff HEAD HEAD^2
+</pre>
+    - Shows the differences between commits/WD
+
+
+git blame
+<pre>
+$ git blame
+</pre>
+    - Shows the files annotated with author and date
 
 
 Open branches
@@ -194,3 +238,67 @@ $ git merge master
     - Use them to close tasks
 
 
+
+2nd part
+    - This will be harder to follow
+
+
+Rebase
+    - You can change a branch parent.
+    - It changes the whole branch: commits get different refs.
+
+
+Cherry-pick
+    - Allows to pick a single commit and bring it anywhere.
+
+
+Conflicts
+    - Conflict resolution is the hardest part at work.
+
+
+3-way resolution
+<pre>
+$ git config merge.confluctstyle diff3
+</pre>
+    - We can change conflict style from merge to diff3.
+    - With --global if you want it in every repo.
+
+3-way output
+<pre>
+<<<<<<< HEAD
+master change.
+||||||| merged
+Original.
+=======
+b1 change.
+>>>>>>> b1
+</pre>
+    - Sample 3-way output
+
+
+Ours or Theirs
+<pre>
+$ git checkout --ours file.txt
+$ git checkout --theirs file.txt
+</pre>
+    - We can solve conflicts saying: take my file.
+
+
+Use your tool
+
+<pre>
+$ git difftool
+$ git mergetool
+</pre>
+    - Git provides a way to choose your tool.
+
+
+Patches
+<pre>
+$ git am -3
+$ git apply *.patch
+</pre>
+    - You can use git to generate patches of code
+    - Or apply someone's patch
+
+    - Way to create and to apply patch

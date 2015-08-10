@@ -1,0 +1,20 @@
+Images:
+https://marklodato.github.io/visual-git-guide/index-en.html
+
+simple guide:
+http://rogerdudler.github.io/git-guide/
+
+from the inside out:
+https://codewords.recurse.com/issues/two/git-from-the-inside-out
+
+git ready:
+http://gitready.com/
+
+practico:
+https://try.github.io/levels/1/challenges/1
+
+visual:
+https://pcottle.github.io/learnGitBranching/
+
+
+https://speakerdeck.com/slok/git-from-scratch
