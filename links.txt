@@ -1,3 +1,6 @@
+To-read:
+http://www.slideshare.net/svenpeters/getting-git-right
+
 Images:
 https://marklodato.github.io/visual-git-guide/index-en.html
 
