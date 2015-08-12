@@ -331,10 +331,9 @@ Special files
 
 Patches
 <pre>
-$ git am -3
+$ git format-patch master --stdout > my.patch
 $ git apply *.patch
 </pre>
     - You can use git to generate patches of code
     - Or apply someone's patch
-
     - Way to create and to apply patch
