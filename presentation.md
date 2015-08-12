@@ -239,7 +239,8 @@ $ git merge master
 
 
 
-2nd part
+Here be dragons
+    - Here starts the second part of the talk
     - This will be harder to follow
 
 
@@ -250,6 +251,35 @@ Rebase
 
 Cherry-pick
     - Allows to pick a single commit and bring it anywhere.
+
+
+Reflog
+<pre>
+$ git reflog
+</pre>
+    - Log of where our HEAD was last months.
+    - You can find there refs to commits you wouldn't (rebased branches)
+
+
+Find the lost commit
+<pre>
+$ git log --reflog --graph \ 
+--date-order --decorate=short
+</pre>
+    - There we see unreachable commits and where they come from
+    - Ordered by date is maybe easier than default (topo)
+
+
+Find the bad one
+<pre>
+$ git bisect start #bad #good
+$ git bisect run test-error.sh
+$ git bisect reset
+</pre>
+    - Binary searches first bad commit
+    - Test-error should return 0 if everything's OK
+    - Test-error shoud return 125 if cannot be tested (will skip)
+    - Test-error exit code 1-127 for bad
 
 
 Conflicts
