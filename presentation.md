@@ -215,26 +215,10 @@ $ git blame
 
 
 Open branches
+<pre>
+$ git checkout -b new_branch
+</pre>
     - Use them to split work
-
-
-git checkout
-<pre>
-$ git checkout (-b) new_branch
-$ git checkout -- file 
-$ git checkout HEAD~2 file 
-</pre>
-
-    - Move to branch (-b creates branch)
-    - Bring files from index or commit
-
-git reset
-<pre>
-$ git reset HEAD .
-$ git reset --hard master 
-</pre>
-
-    - I.E. different tasks
 
 
 Close branches
@@ -248,6 +232,30 @@ $ git merge --no-ff master
 </pre>
 
     - Use them to close tasks
+
+
+Time machine
+    - We need to move around to do some changes
+    - Much fun
+
+git checkout
+<pre>
+$ git checkout new_branch
+$ git checkout -- file 
+$ git checkout HEAD~2 file 
+</pre>
+    - Move to branch (-b creates branch)
+    - Bring files from index or commit
+
+git reset
+<pre>
+$ git reset HEAD^^ 
+$ git reset --hard master 
+$ git reset --mixed master
+</pre>
+    - Moves HEAD pointer (soft)
+    - Hard moves pointer, resets the index, and rebuilds WD
+    - Mixed resets index, but keeps WD
 
 
 Diagram
@@ -273,6 +281,7 @@ Rebase
     - You can change a branch parent.
     - It changes the whole branch: commits get different refs.
     - Commits are 'copied'
+    - Interactive allows us to edit, squash, change order of commits
 
 
 Cherry-pick
@@ -284,7 +293,9 @@ Merge or Rebase
     - Both merge and rebase work to integrate changes.
     - They are not similar.
     - Rebase should be used when we use temporal branches.
-    - Merge --no-ff should be used 
+    - Merge --no-ff should be used to create meaningful merges
+    - Rebase interactive should be used to clean up a local branch before
+      merging
 
 
 Reflog
