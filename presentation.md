@@ -136,10 +136,10 @@ $ git clone http://github.com/gnufede/git-talk
     - Grabs a .git directory from the internet, recreates HEAD in Working Tree
 
 
-![3-phase-commit](http://rogerdudler.github.io/git-guide/img/trees.png)
+Cheatsheet
+![3-phase-commit](images/basic-usage.svg)
 
     - Note the 3 stages
-    - TODO: Change the image
 
 
 Do your stuff
@@ -184,11 +184,13 @@ $ git status
     - Changes to commit
     - Changes not being commited
 
+
 git log
 <pre>
 $ git log
 </pre>
     - Shows the log of commits
+
 
 git show
 <pre>
@@ -198,14 +200,12 @@ $ git show 98765:path/file.txt
     - Shows a commit
 
 
-
 git diff
 <pre>
 $ git diff
 $ git diff HEAD HEAD^2
 </pre>
     - Shows the differences between commits/WD
-
 
 git blame
 <pre>
@@ -220,7 +220,18 @@ Open branches
 
 git checkout
 <pre>
-$ git checkout -b "new_branch"
+$ git checkout (-b) new_branch
+$ git checkout -- file 
+$ git checkout HEAD~2 file 
+</pre>
+
+    - Move to branch (-b creates branch)
+    - Bring files from index or commit
+
+git reset
+<pre>
+$ git reset HEAD .
+$ git reset --hard master 
 </pre>
 
     - I.E. different tasks
@@ -233,10 +244,15 @@ Close branches
 git merge
 <pre>
 $ git merge master
+$ git merge --no-ff master
 </pre>
 
     - Use them to close tasks
 
+
+Diagram
+![3-phase-commit](images/conventions.svg)
+    - See how commits reference their father
 
 
 Here be dragons
@@ -244,13 +260,31 @@ Here be dragons
     - This will be harder to follow
 
 
+Revert
+<pre>
+$ git revert HEAD
+</pre>
+    - Creates an inverse commit
+    - Useful to undo things at any point.
+    - No mess at all.
+
+
 Rebase
     - You can change a branch parent.
     - It changes the whole branch: commits get different refs.
+    - Commits are 'copied'
 
 
 Cherry-pick
-    - Allows to pick a single commit and bring it anywhere.
+    - Allows to pick a single commit and copy it in a different branch.
+    - Like a small version of rebase
+
+
+Merge or Rebase
+    - Both merge and rebase work to integrate changes.
+    - They are not similar.
+    - Rebase should be used when we use temporal branches.
+    - Merge --no-ff should be used 
 
 
 Reflog
