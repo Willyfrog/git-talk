@@ -136,6 +136,14 @@ $ git clone http://github.com/gnufede/git-talk
     - Grabs a .git directory from the internet, recreates HEAD in Working Tree
 
 
+Download/Upload
+<pre>
+$ git pull
+$ git push
+</pre>
+    - Save your work and share it with your team
+
+
 Cheatsheet
 ![3-phase-commit](images/basic-usage.svg)
 
@@ -234,9 +242,8 @@ $ git merge --no-ff master
     - Use them to close tasks
 
 
-Time machine
+Move around
     - We need to move around to do some changes
-    - Much fun
 
 git checkout
 <pre>
@@ -246,16 +253,23 @@ $ git checkout HEAD~2 file
 </pre>
     - Move to branch (-b creates branch)
     - Bring files from index or commit
+    - -- Means no more options, to specify file paths
+
+
+Undo/Reset 
+    - I.E. If we miss some files in a commit
+
 
 git reset
 <pre>
-$ git reset HEAD^^ 
-$ git reset --hard master 
-$ git reset --mixed master
+$ git reset --soft HEAD^^ 
+$ git reset --hard master
+$ git reset master -- file
 </pre>
-    - Moves HEAD pointer (soft)
+    - Moves HEAD pointer (soft) (moving the branch)
     - Hard moves pointer, resets the index, and rebuilds WD
     - Mixed resets index, but keeps WD
+    - With files, skips step 1 (doesn't move HEAD)
 
 
 Diagram
@@ -293,9 +307,26 @@ Merge or Rebase
     - Both merge and rebase work to integrate changes.
     - They are not similar.
     - Rebase should be used when we use temporal branches.
-    - Merge --no-ff should be used to create meaningful merges
-    - Rebase interactive should be used to clean up a local branch before
-      merging
+
+
+Merging features
+<pre>
+@feature$ git merge master
+@master$ git merge --no-ff feature
+</pre>
+    - From feature incorporate master's changes to be compatible
+    - Merge --no-ff should be used to create meaningful merges at master
+
+
+Possible flow
+<pre>
+$ git pull --rebase
+$ git rebase -i @{u}
+$ git push
+</pre>
+    - Avoid merge commits at pull (not meaningful)
+    - Cleanup local commits before push with rebase -i
+
 
 
 Reflog
@@ -358,6 +389,29 @@ $ git checkout --theirs file.txt
 </pre>
     - We can solve conflicts saying: take my file.
 
+Strategies
+<pre>
+@master$ git merge -s recursive -X theirs dev
+@master$ git merge -s recursive -X patience dev
+@master$ git merge -s resolve dev
+</pre>
+    - There are severa strategies with multiple options
+    - For 3-way-merges default is recursive. It's the most complete one.
+    - It goes recursively finding common ancestors in the branches.
+    - -X theirs would take dev's lines in conflicts
+    - If a somewhat simple merge fails, you could try another strategy, like
+      resolve.
+
+ReReRe
+<pre>
+$ git config rerere.enabled true
+$ git rerere
+</pre>
+    - Enable Reuse Recorded Resolution
+    - Each time you resolve a conflict, it will save the diff
+    - With rerere you replay the resolution.
+    - This way, if you constantly rebase or merge to keep up to date, you won't
+      have to resolve manually each time
 
 Use your tool
 
@@ -372,7 +426,10 @@ Special files
 <pre>
 *.pbxproj binary merge=union
 </pre>
-    - Per-file or extension merge strategy
+    - Git attributes
+    - Per-file or extension merge drivers
+    - Options are: text, binary or union
+    - Union means include files from both without markers
 
 Patches
 <pre>
@@ -382,3 +439,16 @@ $ git apply *.patch
     - You can use git to generate patches of code
     - Or apply someone's patch
     - Way to create and to apply patch
+
+Useful patching
+<pre>
+$ git add --patch
+$ git checkout -p
+$ git reset -p
+</pre>
+
+This is not all
+    - There are more commands and options than you can imagine
+
+Thanks
+    - See you next time
